@@ -1,0 +1,5 @@
+nginx:
+  imageTag: '1.22.1'
+
+httpd:
+  imageTag: '2'
