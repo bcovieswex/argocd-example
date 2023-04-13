@@ -25,3 +25,31 @@ spec:
     protocol: TCP
     port: 80
     targetPort: http-web-svc
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: httpd
+  labels:
+    app.kubernetes.io/name: proxy-httpd
+spec:
+  containers:
+  - name: httpd
+    image: httpd:latest
+    ports:
+      - containerPort: 80
+        name: http-web-svc
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: httpd-service
+spec:
+  selector:
+    app.kubernetes.io/name: proxy-httpd
+  ports:
+  - name: name-of-service-port
+    protocol: TCP
+    port: 80
+    targetPort: http-web-svc
