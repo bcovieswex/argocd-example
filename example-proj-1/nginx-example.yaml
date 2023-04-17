@@ -35,7 +35,7 @@ metadata:
 spec:
   containers:
   - name: httpd
-    image: httpd:1
+    image: httpd:latest
     ports:
       - containerPort: 80
         name: http-web-svc
