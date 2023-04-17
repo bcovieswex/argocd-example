@@ -27,7 +27,7 @@ spec:
     targetPort: http-web-svc
 ---
 apiVersion: v1
-kind: Podd
+kind: Pod
 metadata:
   name: httpd
   labels:
