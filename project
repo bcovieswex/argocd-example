@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: zen-devtest
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    environment: devtest
+    zen-devtest_id: zen-devtest
+
+spec:
+  description: Wex zen devtest project
+  sourceRepos:
+  - '*'
+  destinations:
+  - namespace: '*'
+    server: '*'
+  clusterResourceWhitelist:
+  - group: '*'
+    kind: '*'
+  roles:
+  - name: full-access
+    description: Full privileges to zen-devtest
+    groups:
+    - ROLE-G-argocd-zen-devtest
+    policies:
+    - p, proj:zen-devtest:full-access, applications, *, zen-devtest/*, allow
